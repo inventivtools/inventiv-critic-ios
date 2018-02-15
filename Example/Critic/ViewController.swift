@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 
     //MARK: Actions
     @IBAction func sendFeedbackButton() {
-        Critic.shared().setProductAccessToken("NXJMM2CHo5afj9YpauvB1QLk")
+        Critic.shared().setProductAccessToken("YOUR_PRODUCT_ACCESS_TOKEN")
         let report = CriticReportData(description: "Testing from iOS.")
         
         Critic.shared().createReport(report, completion:{(success: Bool, error: Error?) in
@@ -23,4 +23,3 @@ class ViewController: UIViewController {
         })
     }
 }
-
