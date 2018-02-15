@@ -49,7 +49,7 @@
 		A45AAB2B2035F18400D2978E /* Critic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Critic.h; path = ../Critic/Classes/Critic.h; sourceTree = "<group>"; };
 		A45AAB2C2035F18400D2978E /* CriticReportData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CriticReportData.h; path = ../Critic/Classes/CriticReportData.h; sourceTree = "<group>"; };
 		A45AAB2D2035F18400D2978E /* CriticReportData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CriticReportData.m; path = ../Critic/Classes/CriticReportData.m; sourceTree = "<group>"; };
-		A45AAB2E2035F18400D2978E /* Critic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Critic.m; path = ../Critic/Classes/Critic.m; sourceTree = "<group>"; };
+		A45AAB2E2035F18400D2978E /* Critic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Critic.m; path = ../Critic/Classes/Critic.m; sourceTree = "<group>"; wrapsLines = 0; };
 		A45AAB312035F62000D2978E /* Critic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Critic-Bridging-Header.h"; path = "../Critic-Bridging-Header.h"; sourceTree = "<group>"; };
 		A45AAB372035FDCD00D2978E /* ReplaceMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = ../Critic/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		C47745013FA680B17E5F6351 /* Critic.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Critic.podspec; path = ../Critic.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };

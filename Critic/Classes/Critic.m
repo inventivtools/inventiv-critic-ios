@@ -7,17 +7,18 @@ static NSString* _accessToken = nil;
 
 @implementation Critic
 
-+ (instancetype)sharedCritic{
-    static Critic *sSharedCritic = nil;
++ (instancetype)instanceCritic{
+    static Critic *sInstanceCritic = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sSharedCritic = [[self alloc] init];
+        sInstanceCritic = [[self alloc] init];
     });
-    return sSharedCritic;
+    return sInstanceCritic;
 }
 
 - (void)setProductAccessToken:(NSString *)productAccessToken{
-    
+    NSAssert(productAccessToken != nil && productAccessToken.length > 0, @"You need to provide a Product Access Token to create a Report. See the Critic Getting Started Guide at https://inventiv.io/critic/critic-integration-getting-started/.");
+    NSAssert(![productAccessToken isEqual:@"YOUR_PRODUCT_ACCESS_TOKEN"], @"Your Product Access Token is invalid. Please use a valid one. See the Critic Getting Started Guide at https://inventiv.io/critic/critic-integration-getting-started/.");
     _accessToken = productAccessToken;
 }
 
