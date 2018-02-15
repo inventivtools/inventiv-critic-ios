@@ -14,6 +14,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		A45AAB2F2035F18400D2978E /* CriticReportData.m in Sources */ = {isa = PBXBuildFile; fileRef = A45AAB2D2035F18400D2978E /* CriticReportData.m */; };
+		A45AAB302035F18400D2978E /* Critic.m in Sources */ = {isa = PBXBuildFile; fileRef = A45AAB2E2035F18400D2978E /* Critic.m */; };
 		C37CEB1E10E098F6C2C2FE36 /* Pods_Critic_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86C31FFEA02678F14892F55 /* Pods_Critic_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +31,7 @@
 
 /* Begin PBXFileReference section */
 		0C5E3907B448BF4B4C66A6A2 /* Pods-Critic_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Critic_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Critic_Tests/Pods-Critic_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		48683C7110599A7A013E648A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		48683C7110599A7A013E648A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		50E9F6353EFE71332827C2B1 /* Pods-Critic_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Critic_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Critic_Tests/Pods-Critic_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* Critic_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Critic_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,8 +46,14 @@
 		7D22B5304880002CB39A574B /* Pods-Critic_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Critic_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Critic_Example/Pods-Critic_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		814033FF3795D646C45BF3D0 /* Pods-Critic_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Critic_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Critic_Example/Pods-Critic_Example.release.xcconfig"; sourceTree = "<group>"; };
 		9225D4640F246AAAD6EF1F71 /* Pods_Critic_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Critic_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C47745013FA680B17E5F6351 /* Critic.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = Critic.podspec; path = ../Critic.podspec; sourceTree = "<group>"; };
-		D82D92E0E63F3030DAF02571 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		A45AAB2B2035F18400D2978E /* Critic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Critic.h; path = ../Critic/Classes/Critic.h; sourceTree = "<group>"; };
+		A45AAB2C2035F18400D2978E /* CriticReportData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CriticReportData.h; path = ../Critic/Classes/CriticReportData.h; sourceTree = "<group>"; };
+		A45AAB2D2035F18400D2978E /* CriticReportData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CriticReportData.m; path = ../Critic/Classes/CriticReportData.m; sourceTree = "<group>"; };
+		A45AAB2E2035F18400D2978E /* Critic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Critic.m; path = ../Critic/Classes/Critic.m; sourceTree = "<group>"; };
+		A45AAB312035F62000D2978E /* Critic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Critic-Bridging-Header.h"; path = "../Critic-Bridging-Header.h"; sourceTree = "<group>"; };
+		A45AAB372035FDCD00D2978E /* ReplaceMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = ../Critic/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
+		C47745013FA680B17E5F6351 /* Critic.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Critic.podspec; path = ../Critic.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D82D92E0E63F3030DAF02571 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D86C31FFEA02678F14892F55 /* Pods_Critic_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Critic_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -83,6 +91,12 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				A45AAB372035FDCD00D2978E /* ReplaceMe.swift */,
+				A45AAB312035F62000D2978E /* Critic-Bridging-Header.h */,
+				A45AAB2B2035F18400D2978E /* Critic.h */,
+				A45AAB2E2035F18400D2978E /* Critic.m */,
+				A45AAB2C2035F18400D2978E /* CriticReportData.h */,
+				A45AAB2D2035F18400D2978E /* CriticReportData.m */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for Critic */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -215,7 +229,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 0920;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -380,6 +394,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				A45AAB302035F18400D2978E /* Critic.m in Sources */,
+				A45AAB2F2035F18400D2978E /* CriticReportData.m in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,11 +542,14 @@
 			baseConfigurationReference = 7D22B5304880002CB39A574B /* Pods-Critic_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Critic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Critic_Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -541,11 +560,13 @@
 			baseConfigurationReference = 814033FF3795D646C45BF3D0 /* Pods-Critic_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Critic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Critic_Example-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

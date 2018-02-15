@@ -1,6 +1,6 @@
 # Critic
 
-[![CI Status](http://img.shields.io/travis/Dave Lane/Critic.svg?style=flat)](https://travis-ci.org/Dave Lane/Critic)
+[![CI Status](http://img.shields.io/travis/inventiv-llc/inventiv-critic-ios.svg?style=flat)](https://travis-ci.org/inventiv-llc/inventiv-critic-ios)
 [![Version](https://img.shields.io/cocoapods/v/Critic.svg?style=flat)](http://cocoapods.org/pods/Critic)
 [![License](https://img.shields.io/cocoapods/l/Critic.svg?style=flat)](http://cocoapods.org/pods/Critic)
 [![Platform](https://img.shields.io/cocoapods/p/Critic.svg?style=flat)](http://cocoapods.org/pods/Critic)
@@ -9,21 +9,18 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
-
 ## Installation
 
-Critic is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
+1. Add the Critic pod to your `Podfile`.
 ```ruby
 pod 'Critic'
 ```
-
-## Author
-
-Dave Lane, dclane@gmail.com
+2. Find your Product Access Token in the [Critic Web Portal](https://critic.inventiv.io/products) by viewing your Product's details.
+3. Initialize Critic by starting it from your `AppDelegate`.
+```swift
+TODO
+```
 
 ## License
 
-Critic is available under the MIT license. See the LICENSE file for more info.
+This library is released under the MIT License.

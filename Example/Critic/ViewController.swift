@@ -1,11 +1,4 @@
-//
-//  ViewController.swift
-//  Critic
-//
-//  Created by Dave Lane on 02/15/2018.
-//  Copyright (c) 2018 Dave Lane. All rights reserved.
-//
-
+import Critic
 import UIKit
 
 class ViewController: UIViewController {
@@ -20,5 +13,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    //MARK: Actions
+    @IBAction func sendFeedbackButton() {
+        Critic.shared().setProductAccessToken("NXJMM2CHo5afj9YpauvB1QLk")
+        let report = CriticReportData(description: "Testing from iOS.")
+        
+        Critic.shared().createReport(report, completion:{(success: Bool, error: Error?) in
+            // do nothing for now.
+        })
+    }
 }
 
