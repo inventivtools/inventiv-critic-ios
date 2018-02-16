@@ -3,11 +3,11 @@
 #import "Critic.h"
 #import "CriticReportData.h"
 
-static Critic *_instance = nil;
 
 @implementation Critic
 
 + (instancetype)instanceCritic{
+    static Critic *_instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [[self alloc] init];
