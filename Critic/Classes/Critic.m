@@ -3,21 +3,16 @@
 #import "Critic.h"
 #import "CriticReportData.h"
 
-static __weak Critic *instance;
-Critic *strongInstance;
+static Critic *_instance = nil;
 
 @implementation Critic
 
 + (instancetype)instanceCritic{
-    
-    strongInstance = instance;
-    @synchronized(self) {
-        if (strongInstance == nil) {
-            strongInstance = [[Critic alloc] init];
-            instance = strongInstance;
-        }
-    }
-    return strongInstance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[self alloc] init];
+    });
+    return _instance;
 }
 
 @end
