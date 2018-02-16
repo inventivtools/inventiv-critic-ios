@@ -1,8 +1,11 @@
 #import <Foundation/Foundation.h>
-#import "NVCCritic.h"
 
 @interface Critic : NSObject
 
-+ (NVCCritic *)instance;
+@property (nonatomic, strong) NSString *productAccessToken;
+
++ (Critic *)instance;
+- (void)start:(NSString *)productAccessToken;
 
 @end
+

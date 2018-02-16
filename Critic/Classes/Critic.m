@@ -1,11 +1,20 @@
 #import <Foundation/Foundation.h>
 #import "Critic.h"
-#import "NVCCritic.h"
 
 @implementation Critic
 
-+ (NVCCritic *)instance{
-    return [NVCCritic instance];
++ (Critic *)instance{
+    static Critic *_instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[self alloc] init];
+    });
+    return _instance;
+}
+
+- (void)start:(NSString *)productAccessToken{
+    [self setProductAccessToken:productAccessToken];
 }
 
 @end
+

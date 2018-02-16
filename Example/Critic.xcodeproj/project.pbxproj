@@ -14,7 +14,6 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		A45AAB302035F18400D2978E /* Critic.m in Sources */ = {isa = PBXBuildFile; fileRef = A45AAB2E2035F18400D2978E /* Critic.m */; };
 		A45AAB412036364000D2978E /* NVCReport.m in Sources */ = {isa = PBXBuildFile; fileRef = A45AAB402036364000D2978E /* NVCReport.m */; };
 		C37CEB1E10E098F6C2C2FE36 /* Pods_Critic_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86C31FFEA02678F14892F55 /* Pods_Critic_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -46,15 +45,13 @@
 		7D22B5304880002CB39A574B /* Pods-Critic_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Critic_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Critic_Example/Pods-Critic_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		814033FF3795D646C45BF3D0 /* Pods-Critic_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Critic_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Critic_Example/Pods-Critic_Example.release.xcconfig"; sourceTree = "<group>"; };
 		9225D4640F246AAAD6EF1F71 /* Pods_Critic_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Critic_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A45AAB2B2035F18400D2978E /* Critic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Critic.h; path = ../Critic/Classes/Critic.h; sourceTree = "<group>"; };
-		A45AAB2E2035F18400D2978E /* Critic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Critic.m; path = ../Critic/Classes/Critic.m; sourceTree = "<group>"; wrapsLines = 0; };
 		A45AAB312035F62000D2978E /* Critic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Critic-Bridging-Header.h"; path = "../Critic-Bridging-Header.h"; sourceTree = "<group>"; };
 		A45AAB382036335300D2978E /* NVCReportCreator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NVCReportCreator.m; path = ../Critic/Classes/NVCReportCreator.m; sourceTree = "<group>"; };
 		A45AAB392036336A00D2978E /* NVCReportCreator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NVCReportCreator.h; path = ../Critic/Classes/NVCReportCreator.h; sourceTree = "<group>"; };
 		A45AAB3F2036364000D2978E /* NVCReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVCReport.h; sourceTree = "<group>"; };
 		A45AAB402036364000D2978E /* NVCReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVCReport.m; sourceTree = "<group>"; };
-		A4DE320C20369A6B00BD83BB /* NVCCritic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NVCCritic.m; path = ../Critic/Classes/NVCCritic.m; sourceTree = "<group>"; };
-		A4DE320D20369A9400BD83BB /* NVCCritic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NVCCritic.h; path = ../Critic/Classes/NVCCritic.h; sourceTree = "<group>"; };
+		A4DE320C20369A6B00BD83BB /* Critic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Critic.m; path = ../Critic/Classes/Critic.m; sourceTree = "<group>"; };
+		A4DE320D20369A9400BD83BB /* Critic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Critic.h; path = ../Critic/Classes/Critic.h; sourceTree = "<group>"; };
 		C47745013FA680B17E5F6351 /* Critic.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Critic.podspec; path = ../Critic.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D82D92E0E63F3030DAF02571 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D86C31FFEA02678F14892F55 /* Pods_Critic_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Critic_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,14 +91,12 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				A4DE320D20369A9400BD83BB /* NVCCritic.h */,
-				A4DE320C20369A6B00BD83BB /* NVCCritic.m */,
+				A4DE320D20369A9400BD83BB /* Critic.h */,
+				A4DE320C20369A6B00BD83BB /* Critic.m */,
 				A45AAB3E203635F600D2978E /* Models */,
 				A45AAB392036336A00D2978E /* NVCReportCreator.h */,
 				A45AAB382036335300D2978E /* NVCReportCreator.m */,
 				A45AAB312035F62000D2978E /* Critic-Bridging-Header.h */,
-				A45AAB2B2035F18400D2978E /* Critic.h */,
-				A45AAB2E2035F18400D2978E /* Critic.m */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for Critic */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -410,7 +405,6 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				A45AAB412036364000D2978E /* NVCReport.m in Sources */,
-				A45AAB302035F18400D2978E /* Critic.m in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
