@@ -54,6 +54,14 @@
 
 - (void)addStandardMetadata{
     
+    NSMutableDictionary* app = [NSMutableDictionary new];
+    NSBundle* bundle = [NSBundle mainBundle];
+    [app setObject:[bundle objectForInfoDictionaryKey:@"CFBundleName"] forKey:@"name"];
+    [app setObject:[bundle bundleIdentifier] forKey:@"package"];
+    [app setObject:[bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version_code"];
+    [app setObject:[bundle objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey] forKey:@"version_name"];
+    [metadata setObject:app forKey:@"ic_application"];
+    
     NSMutableDictionary* device = [NSMutableDictionary new];
     [device setObject:@"iOS" forKey:@"platform"];
     [metadata setObject:device forKey:@"ic_device"];
