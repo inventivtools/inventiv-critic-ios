@@ -10,33 +10,26 @@
 @synthesize attachmentFilePath;
 @synthesize metadata;
 
-+ (void)initialize {
-    NSLog(@"NVCReportCreator#initialize: %@", [[Critic instance] productAccessToken]);
-}
-
 - (void)create:(void (^)(BOOL success, NSError *))completionBlock{
 
     NSURL *url = [NSURL URLWithString:@"https://critic.inventiv.io/api/v1/reports"];
-    
-    // generate request
     NSString *boundary = [NSString stringWithFormat:@"Boundary-%@", [[NSUUID UUID] UUIDString]];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     
-    // configure the request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setHTTPMethod:@"POST"];
-    
-    // set content type
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
     
-    // create body
+    if(!metadata){
+        metadata = [NSMutableDictionary new];
+    }
+    [self addStandardMetadata];
+    
     NSDictionary *params = [self generateParams];
     NSData *httpBody = [self createBodyWithBoundary:boundary parameters:params path:attachmentFilePath fieldName:@"report[attachment]"];
     
-    // send the request
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionTask *task = [session uploadTaskWithRequest:request fromData:httpBody completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
         if(error){
             NSLog(@"Critic - failed to upload report. Error = %@", error);
             completionBlock(NO, error);
@@ -45,29 +38,39 @@
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
             long code = (long)[httpResponse statusCode];
             if(code == 201){
-                
                 NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                 NSLog(@"Critic - report has been uploaded successfully. Result = %@", result);
                 completionBlock(YES, error);
             }
             else{
                 NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                NSLog(@"Critic - server returned code: %lo and result = %@", code, result);
+                NSLog(@"Critic - server returned code: %ld and result = %@", code, result);
                 completionBlock(NO, error);
             }
         }
     }];
-    
     [task resume];
+}
+
+- (void)addStandardMetadata{
+    
+    NSMutableDictionary* device = [NSMutableDictionary new];
+    [device setObject:@"iOS" forKey:@"platform"];
+    [metadata setObject:device forKey:@"ic_device"];
 }
 
 - (NSDictionary *)generateParams{
     NSLog(@"TOKEN: %@", [Critic instance].productAccessToken);
+    
+    NSError* error;
+    NSData* metadataJsonData = [NSJSONSerialization dataWithJSONObject:metadata options:(NSJSONWritingOptions) 0 error:&error];
+    NSString* metadataJsonString = [[NSString alloc] initWithData:metadataJsonData encoding:NSUTF8StringEncoding];
+    
     NSDictionary *params = @{
-        @"report[attachment_file_name]" : attachmentFileName != nil ? attachmentFileName : @"",
+        @"report[product_access_token]" : [[Critic instance] productAccessToken],
         @"report[description]" : description != nil ? description : @"",
-        @"report[metadata]" : metadata != nil ? metadata : @"{}",
-        @"report[product_access_token]" : [[Critic instance] productAccessToken]
+        @"report[metadata]" : metadataJsonString != nil ? metadataJsonString : @"{}",
+        @"report[attachment_file_name]" : attachmentFileName != nil ? attachmentFileName : @"",
     };
     return params;
 }
