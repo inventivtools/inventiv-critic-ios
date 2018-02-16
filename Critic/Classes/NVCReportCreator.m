@@ -104,11 +104,18 @@
     [memory setObject:[NSNumber numberWithDouble:[systemServices activeMemoryinRaw]] forKey:@"active" ];
     [memory setObject:[NSNumber numberWithDouble:[systemServices freeMemoryinRaw]] forKey:@"free" ];
     [memory setObject:[NSNumber numberWithDouble:[systemServices inactiveMemoryinRaw]] forKey:@"inactive" ];
+    [memory setObject:[NSNumber numberWithDouble:[systemServices purgableMemoryinRaw]] forKey:@"purgable" ];
+    [memory setObject:[NSNumber numberWithDouble:[systemServices wiredMemoryinRaw]] forKey:@"wired" ];
+    [memory setObject:[NSNumber numberWithDouble:[systemServices inactiveMemoryinRaw]] forKey:@"inactive" ];
     [memory setObject:[NSNumber numberWithDouble:[systemServices wiredMemoryinRaw]] forKey:@"wired" ];
     
     NSMutableDictionary *network = [NSMutableDictionary new];
     [network setObject:@([systemServices connectedToCellNetwork]) forKey:@"cell_connected" ];
     [network setObject:@([systemServices connectedToWiFi]) forKey:@"wifi_connected" ];
+    NSString* carrierName = [systemServices carrierName];
+    if(carrierName){
+        [network setObject:carrierName forKey:@"carrier_name" ];
+    }
     
     NSMutableDictionary* device = [NSMutableDictionary new];
     [device setObject:battery forKey:@"battery"];
@@ -138,13 +145,8 @@
     return params;
 }
 
-- (NSData *)createBodyWithBoundary:(NSString *)boundary
-parameters:(NSDictionary *)parameters
-path:(NSString *)path
-fieldName:(NSString *)fieldName {
+- (NSData *)createBodyWithBoundary:(NSString *)boundary parameters:(NSDictionary *)parameters path:(NSString *)path fieldName:(NSString *)fieldName {
     NSMutableData *httpBody = [NSMutableData data];
-    
-    // add parameters
     [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
         [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
         [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", parameterKey] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -167,20 +169,15 @@ fieldName:(NSString *)fieldName {
     }
     
     [httpBody appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    
     return httpBody;
 }
 
 - (NSString *)mimeTypeForPath:(NSString *)path {
-    // get a mime type for an extension using MobileCoreServices.framework
     
     CFStringRef extension = (__bridge CFStringRef)[path pathExtension];
     CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, extension, NULL);
-    
     NSString *mimetype = CFBridgingRelease(UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType));
-    
     CFRelease(UTI);
-    
     return mimetype;
 }
 @end
