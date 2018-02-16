@@ -7,7 +7,6 @@
 @implementation NVCReportCreator
 
 @synthesize description;
-@synthesize attachmentFileName;
 @synthesize attachmentFilePath;
 @synthesize metadata;
 
@@ -26,8 +25,10 @@
     }
     [self addStandardMetadata];
     
+    attachmentFilePath = [[Critic instance] getLogFilePath];
+    
     NSDictionary *params = [self generateParams];
-    NSData *httpBody = [self createBodyWithBoundary:boundary parameters:params path:attachmentFilePath fieldName:@"report[attachment]"];
+    NSData *httpBody = [self createBodyWithBoundary:boundary parameters:params path:attachmentFilePath fieldName:@"report[attachments][]"];
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionTask *task = [session uploadTaskWithRequest:request fromData:httpBody completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -115,6 +116,8 @@
     NSString* carrierName = [systemServices carrierName];
     if(carrierName){
         [network setObject:carrierName forKey:@"carrier_name" ];
+    } else {
+        [network setObject:@"N/A" forKey:@"carrier_name" ];
     }
     
     NSMutableDictionary* device = [NSMutableDictionary new];
@@ -130,8 +133,6 @@
 }
 
 - (NSDictionary *)generateParams{
-    NSLog(@"TOKEN: %@", [Critic instance].productAccessToken);
-    
     NSError* error;
     NSData* metadataJsonData = [NSJSONSerialization dataWithJSONObject:metadata options:(NSJSONWritingOptions) 0 error:&error];
     NSString* metadataJsonString = [[NSString alloc] initWithData:metadataJsonData encoding:NSUTF8StringEncoding];
@@ -140,7 +141,6 @@
         @"report[product_access_token]" : [[Critic instance] productAccessToken],
         @"report[description]" : description != nil ? description : @"",
         @"report[metadata]" : metadataJsonString != nil ? metadataJsonString : @"{}",
-        @"report[attachment_file_name]" : attachmentFileName != nil ? attachmentFileName : @"",
     };
     return params;
 }
