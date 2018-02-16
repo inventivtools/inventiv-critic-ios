@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     //MARK: Actions
     @IBAction func sendFeedbackButton() {
         
-        NSLog("ViewController#sendFeedbackButton: %@", Critic.instance().productAccessToken)
         let reportCreator = NVCReportCreator()
         reportCreator.description = "Testing from iOS."
         

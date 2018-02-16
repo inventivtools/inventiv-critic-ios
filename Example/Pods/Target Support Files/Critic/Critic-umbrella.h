@@ -12,6 +12,7 @@
 
 #import "Critic.h"
 #import "CriticReportData.h"
+#import "CriticWrapper.h"
 #import "NVCReport.h"
 #import "NVCReportCreator.h"
 

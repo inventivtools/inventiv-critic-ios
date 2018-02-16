@@ -5,6 +5,6 @@
 
 @property (nonatomic, strong) NSString *productAccessToken;
 
-+ (instancetype)instanceCritic;
++ (Critic *)instance;
 
 @end

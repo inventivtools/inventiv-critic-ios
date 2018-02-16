@@ -8,9 +8,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Critic.instance().productAccessToken = "NXJMM2CHo5afj9YpauvB1QLk"
-        let reportCreator = NVCReportCreator()
-        NSLog("AppDelegate#didFinishLaunchingWithOptions: %@", Critic.instance().productAccessToken)
+        CriticWrapper.instance().productAccessToken = "NXJMM2CHo5afj9YpauvB1QLk"
+        NSLog("AppDelegate#didFinishLaunchingWithOptions: %@", CriticWrapper.instance().productAccessToken)
+        
+        NVCReportCreator()
+        
         return true
     }
 

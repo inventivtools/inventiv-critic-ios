@@ -1,18 +1,16 @@
 #import <Foundation/Foundation.h>
-#import <MobileCoreServices/MobileCoreServices.h>
 #import "Critic.h"
 #import "CriticReportData.h"
 
-
 @implementation Critic
 
-+ (instancetype)instanceCritic{
-    static Critic *_instance = nil;
++ (Critic *)instance{
+    static Critic *_fella = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _instance = [[self alloc] init];
+        _fella = [[self alloc] init];
     });
-    return _instance;
+    return _fella;
 }
 
 @end

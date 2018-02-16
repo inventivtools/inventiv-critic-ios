@@ -1,5 +1,4 @@
 #import <Foundation/Foundation.h>
-#import "Critic.h"
 
 @interface NVCReportCreator : NSObject
 

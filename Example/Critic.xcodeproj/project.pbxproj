@@ -56,6 +56,8 @@
 		A45AAB392036336A00D2978E /* NVCReportCreator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NVCReportCreator.h; path = ../Critic/Classes/NVCReportCreator.h; sourceTree = "<group>"; };
 		A45AAB3F2036364000D2978E /* NVCReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVCReport.h; sourceTree = "<group>"; };
 		A45AAB402036364000D2978E /* NVCReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVCReport.m; sourceTree = "<group>"; };
+		A4DE320C20369A6B00BD83BB /* CriticWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CriticWrapper.m; path = ../Critic/Classes/CriticWrapper.m; sourceTree = "<group>"; };
+		A4DE320D20369A9400BD83BB /* CriticWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CriticWrapper.h; path = ../Critic/Classes/CriticWrapper.h; sourceTree = "<group>"; };
 		C47745013FA680B17E5F6351 /* Critic.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Critic.podspec; path = ../Critic.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D82D92E0E63F3030DAF02571 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D86C31FFEA02678F14892F55 /* Pods_Critic_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Critic_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,8 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				A4DE320D20369A9400BD83BB /* CriticWrapper.h */,
+				A4DE320C20369A6B00BD83BB /* CriticWrapper.m */,
 				A45AAB3E203635F600D2978E /* Models */,
 				A45AAB392036336A00D2978E /* NVCReportCreator.h */,
 				A45AAB382036335300D2978E /* NVCReportCreator.m */,
@@ -458,6 +462,7 @@
 		607FACED1AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -511,6 +516,7 @@
 		607FACEE1AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
