@@ -11,6 +11,8 @@
 
 + (void)initialize {
     NSLog(@"NVCReportCreator#initialize: %@", [[Critic instanceCritic] productAccessToken]);
+    [[Critic instanceCritic] setProductAccessToken:@"LOLWHAT"];
+    NSLog(@"NVCReportCreator#initialize2: %@", [[Critic instanceCritic] productAccessToken]);
 }
 
 - (void)create:(void (^)(BOOL success, NSError *))completionBlock{
