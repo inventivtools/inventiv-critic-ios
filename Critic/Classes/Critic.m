@@ -19,9 +19,8 @@
 
     if([self shouldLogToFile]){
         NSString *logFilePath = [self getLogFilePath];
-        id fileHandle = [NSFileHandle fileHandleForWritingAtPath:logFilePath];
-        dup2([fileHandle fileDescriptor], STDERR_FILENO);
-        dup2([fileHandle fileDescriptor], STDOUT_FILENO);
+        freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
+        freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stdout);
     }
 }
 

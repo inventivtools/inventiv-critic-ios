@@ -6,8 +6,8 @@
 
 @implementation NVCReportCreator
 
-@synthesize description;
 @synthesize attachmentFilePaths;
+@synthesize description;
 @synthesize metadata;
 
 - (void)create:(void (^)(BOOL success, NSError *))completionBlock{
@@ -16,47 +16,54 @@
     NSString *boundary = [NSString stringWithFormat:@"Boundary-%@", [[NSUUID UUID] UUIDString]];
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    if(!metadata){
-        metadata = [NSMutableDictionary new];
-    }
-    [self addStandardMetadata];
-    
-    if(!attachmentFilePaths){
-        attachmentFilePaths = [NSMutableArray new];
-    }
-    if([[Critic instance] shouldLogToFile]){
-        [attachmentFilePaths addObject:[[Critic instance] getLogFilePath]];
-    }
-    
-    NSDictionary *params = [self generateParams];
-    NSData *httpBody = [self createBodyWithBoundary:boundary parameters:params];
-    
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionTask *task = [session uploadTaskWithRequest:request fromData:httpBody completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if(error){
-            NSLog(@"Critic - failed to upload report. Error = %@", error);
-            completionBlock(NO, error);
+    NSMutableURLRequest *request = nil;
+    @try {
+        request = [[NSMutableURLRequest alloc] initWithURL:url];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+        
+        if(!metadata){
+            metadata = [NSMutableDictionary new];
         }
-        else{
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-            long code = (long)[httpResponse statusCode];
-            if(code == 201){
-                NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                NSLog(@"Critic - report has been uploaded successfully. Result = %@", result);
-                completionBlock(YES, error);
-            }
-            else{
-                NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                NSLog(@"Critic - server returned code: %ld and result = %@", code, result);
+        [self addStandardMetadata];
+        
+        if(!attachmentFilePaths){
+            attachmentFilePaths = [NSMutableArray new];
+        }
+        if([[Critic instance] shouldLogToFile]){
+            [attachmentFilePaths addObject:[[Critic instance] getLogFilePath]];
+        }
+        
+        NSDictionary *params = [self generateParams];
+        NSData *httpBody = [self createBodyWithBoundary:boundary parameters:params];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionTask *task = [session uploadTaskWithRequest:request fromData:httpBody completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if(error){
+                NSLog(@"Critic - Failed to upload report: %@", error);
                 completionBlock(NO, error);
             }
-        }
-    }];
-    [task resume];
+            else{
+                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                long code = (long)[httpResponse statusCode];
+                if(code == 201){
+                    NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                    NSLog(@"Critic - Report has been uploaded successfully: %@", result);
+                    completionBlock(YES, error);
+                }
+                else{
+                    NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                    NSLog(@"Critic - Request failed. Server returned response code[%ld]. Result: %@", code, result);
+                    completionBlock(NO, error);
+                }
+            }
+        }];
+        [task resume];
+    }
+    @catch (NSError *error) {
+        NSLog(@"Critic - Error encountered forming request: %@", error);
+        completionBlock(NO, error);
+    }
 }
 
 - (void)addStandardMetadata{
@@ -165,7 +172,6 @@
             NSString *mimetype = [self mimeTypeForPath:path];
             
             NSLog(@"Critic - sending %@ with mimetype of %@", filename, mimetype);
-            
             [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
             [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", @"report[attachments][]", filename] dataUsingEncoding:NSUTF8StringEncoding]];
             [httpBody appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimetype] dataUsingEncoding:NSUTF8StringEncoding]];

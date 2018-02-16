@@ -21,10 +21,10 @@ class ViewController: UIViewController {
         
         reportCreator.create({(success: Bool, error: Error?) in
             if success {
-                print("Feedback has been submitted!")
+                NSLog("Feedback has been submitted!")
             }
             else {
-                print("Something went wrong.");
+                NSLog("Feedback submission failed.")
             }
         })
     }
