@@ -60,8 +60,8 @@
     NSBundle* bundle = [NSBundle mainBundle];
     [app setObject:[bundle objectForInfoDictionaryKey:@"CFBundleName"] forKey:@"name"];
     [app setObject:[bundle bundleIdentifier] forKey:@"package"];
-    [app setObject:[bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version_code"];
-    [app setObject:[bundle objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey] forKey:@"version_name"];
+    [app setObject:[bundle objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey] forKey:@"version_code"];
+    [app setObject:[bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version_name"];
     [metadata setObject:app forKey:@"ic_application"];
     
     UIDevice *myDevice = [UIDevice currentDevice];
@@ -117,7 +117,7 @@
     [device setObject:[[myDevice identifierForVendor] UUIDString] forKey:@"identifier"];
     [device setObject:memory forKey:@"memory"];
     [device setObject:network forKey:@"network"];
-    [device setObject:[systemServices processorsUsage] forKey:@"cpu_usages"];
+    [device setObject:[systemServices processorsUsage] forKey:@"processors"];
     [device setObject:[myDevice systemName] forKey:@"platform"];
     [metadata setObject:device forKey:@"ic_device"];
 }
