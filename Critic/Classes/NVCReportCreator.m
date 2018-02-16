@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "NVCReportCreator.h"
-#import "CriticWrapper.h"
+#import "Critic.h"
 
 @implementation NVCReportCreator
 
@@ -11,7 +11,7 @@
 @synthesize metadata;
 
 + (void)initialize {
-    NSLog(@"NVCReportCreator#initialize: %@", [[CriticWrapper instance] productAccessToken]);
+    NSLog(@"NVCReportCreator#initialize: %@", [[Critic instance] productAccessToken]);
 }
 
 - (void)create:(void (^)(BOOL success, NSError *))completionBlock{
@@ -62,12 +62,12 @@
 }
 
 - (NSDictionary *)generateParams{
-    NSLog(@"TOKEN: %@", [CriticWrapper instance].productAccessToken);
+    NSLog(@"TOKEN: %@", [Critic instance].productAccessToken);
     NSDictionary *params = @{
         @"report[attachment_file_name]" : attachmentFileName != nil ? attachmentFileName : @"",
         @"report[description]" : description != nil ? description : @"",
         @"report[metadata]" : metadata != nil ? metadata : @"{}",
-        @"report[product_access_token]" : [[CriticWrapper instance] productAccessToken]
+        @"report[product_access_token]" : [[Critic instance] productAccessToken]
     };
     return params;
 }

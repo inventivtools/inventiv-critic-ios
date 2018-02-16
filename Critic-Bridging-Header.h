@@ -1,4 +1,4 @@
 import Critic.h
-import CriticReportData.h
+import NVCCritic.h
 import NVCReport.h
 import NVCReportCreator.h

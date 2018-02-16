@@ -11,9 +11,8 @@
 #endif
 
 #import "Critic.h"
-#import "CriticReportData.h"
-#import "CriticWrapper.h"
 #import "NVCReport.h"
+#import "NVCCritic.h"
 #import "NVCReportCreator.h"
 
 FOUNDATION_EXPORT double CriticVersionNumber;
