@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "SystemServices.h"
 #import "NVCReportCreator.h"
 #import "Critic.h"
 
@@ -53,6 +54,7 @@
 }
 
 - (void)addStandardMetadata{
+    SystemServices* systemServices = [SystemServices sharedServices];
     
     NSMutableDictionary* app = [NSMutableDictionary new];
     NSBundle* bundle = [NSBundle mainBundle];
@@ -62,8 +64,61 @@
     [app setObject:[bundle objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey] forKey:@"version_name"];
     [metadata setObject:app forKey:@"ic_application"];
     
+    UIDevice *myDevice = [UIDevice currentDevice];
+    [myDevice setBatteryMonitoringEnabled:YES];
+    
+    NSString* batteryStateString = nil;
+    switch([myDevice batteryState]) {
+        case UIDeviceBatteryStateUnknown:
+            batteryStateString = @"Unknown";
+            break;
+        case UIDeviceBatteryStateFull:
+            batteryStateString = @"Full";
+            break;
+        case UIDeviceBatteryStateCharging:
+            batteryStateString = @"Charging";
+            break;
+        case UIDeviceBatteryStateUnplugged:
+            batteryStateString = @"Unplugged";
+        default:
+            batteryStateString = @"Unknown";
+            break;
+    }
+    
+    NSMutableDictionary* battery = [NSMutableDictionary new];
+    [battery setObject:@([SSHardwareInfo pluggedIn]) forKey:@"charging_status"];
+    [battery setObject:[NSNumber numberWithFloat:[systemServices batteryLevel]] forKey:@"percentage"];
+    [battery setObject:batteryStateString forKey:@"state"];
+    
+    NSMutableDictionary* build = [NSMutableDictionary new];
+    [build setObject:@"Apple" forKey:@"manufacturer"];
+    [build setObject:[systemServices deviceModel] forKey:@"model"];
+    [build setObject:[systemServices systemsVersion] forKey:@"version"];
+    
+    NSMutableDictionary *disk = [NSMutableDictionary new];
+    [disk setObject:[NSNumber numberWithLong:[systemServices longDiskSpace]] forKey:@"total" ];
+    [disk setObject:[NSNumber numberWithLong:[systemServices longFreeDiskSpace]] forKey:@"free" ];
+    
+    NSMutableDictionary *memory = [NSMutableDictionary new];
+    [memory setObject:[NSNumber numberWithDouble:[systemServices totalMemory]] forKey:@"total" ];
+    [memory setObject:[NSNumber numberWithDouble:[systemServices activeMemoryinRaw]] forKey:@"active" ];
+    [memory setObject:[NSNumber numberWithDouble:[systemServices freeMemoryinRaw]] forKey:@"free" ];
+    [memory setObject:[NSNumber numberWithDouble:[systemServices inactiveMemoryinRaw]] forKey:@"inactive" ];
+    [memory setObject:[NSNumber numberWithDouble:[systemServices wiredMemoryinRaw]] forKey:@"wired" ];
+    
+    NSMutableDictionary *network = [NSMutableDictionary new];
+    [network setObject:@([systemServices connectedToCellNetwork]) forKey:@"cell_connected" ];
+    [network setObject:@([systemServices connectedToWiFi]) forKey:@"wifi_connected" ];
+    
     NSMutableDictionary* device = [NSMutableDictionary new];
-    [device setObject:@"iOS" forKey:@"platform"];
+    [device setObject:battery forKey:@"battery"];
+    [device setObject:build forKey:@"build"];
+    [device setObject:disk forKey:@"disk"];
+    [device setObject:[[myDevice identifierForVendor] UUIDString] forKey:@"identifier"];
+    [device setObject:memory forKey:@"memory"];
+    [device setObject:network forKey:@"network"];
+    [device setObject:[systemServices processorsUsage] forKey:@"cpu_usages"];
+    [device setObject:[myDevice systemName] forKey:@"platform"];
     [metadata setObject:device forKey:@"ic_device"];
 }
 

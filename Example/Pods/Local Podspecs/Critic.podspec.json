@@ -19,5 +19,10 @@
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "Critic/Classes/**/*"
+  "source_files": "Critic/Classes/**/*",
+  "dependencies": {
+    "SystemServices": [
+      "~> 2.0.1"
+    ]
+  }
 }

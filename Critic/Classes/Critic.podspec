@@ -39,4 +39,5 @@ iOS Library for accepting actionable customer feedback via Inventiv Critic. You 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'SystemServices', '~> 2.0.1'
 end
