@@ -16,6 +16,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		A45AAB2F2035F18400D2978E /* CriticReportData.m in Sources */ = {isa = PBXBuildFile; fileRef = A45AAB2D2035F18400D2978E /* CriticReportData.m */; };
 		A45AAB302035F18400D2978E /* Critic.m in Sources */ = {isa = PBXBuildFile; fileRef = A45AAB2E2035F18400D2978E /* Critic.m */; };
+		A45AAB412036364000D2978E /* NVCReport.m in Sources */ = {isa = PBXBuildFile; fileRef = A45AAB402036364000D2978E /* NVCReport.m */; };
 		C37CEB1E10E098F6C2C2FE36 /* Pods_Critic_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86C31FFEA02678F14892F55 /* Pods_Critic_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +36,7 @@
 		50E9F6353EFE71332827C2B1 /* Pods-Critic_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Critic_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Critic_Tests/Pods-Critic_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* Critic_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Critic_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -51,7 +52,10 @@
 		A45AAB2D2035F18400D2978E /* CriticReportData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CriticReportData.m; path = ../Critic/Classes/CriticReportData.m; sourceTree = "<group>"; };
 		A45AAB2E2035F18400D2978E /* Critic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Critic.m; path = ../Critic/Classes/Critic.m; sourceTree = "<group>"; wrapsLines = 0; };
 		A45AAB312035F62000D2978E /* Critic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Critic-Bridging-Header.h"; path = "../Critic-Bridging-Header.h"; sourceTree = "<group>"; };
-		A45AAB372035FDCD00D2978E /* ReplaceMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = ../Critic/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
+		A45AAB382036335300D2978E /* NVCReportCreator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NVCReportCreator.m; path = ../Critic/Classes/NVCReportCreator.m; sourceTree = "<group>"; };
+		A45AAB392036336A00D2978E /* NVCReportCreator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NVCReportCreator.h; path = ../Critic/Classes/NVCReportCreator.h; sourceTree = "<group>"; };
+		A45AAB3F2036364000D2978E /* NVCReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVCReport.h; sourceTree = "<group>"; };
+		A45AAB402036364000D2978E /* NVCReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVCReport.m; sourceTree = "<group>"; };
 		C47745013FA680B17E5F6351 /* Critic.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Critic.podspec; path = ../Critic.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D82D92E0E63F3030DAF02571 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D86C31FFEA02678F14892F55 /* Pods_Critic_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Critic_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +95,9 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				A45AAB372035FDCD00D2978E /* ReplaceMe.swift */,
+				A45AAB3E203635F600D2978E /* Models */,
+				A45AAB392036336A00D2978E /* NVCReportCreator.h */,
+				A45AAB382036335300D2978E /* NVCReportCreator.m */,
 				A45AAB312035F62000D2978E /* Critic-Bridging-Header.h */,
 				A45AAB2B2035F18400D2978E /* Critic.h */,
 				A45AAB2E2035F18400D2978E /* Critic.m */,
@@ -163,6 +169,16 @@
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
+		};
+		A45AAB3E203635F600D2978E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A45AAB3F2036364000D2978E /* NVCReport.h */,
+				A45AAB402036364000D2978E /* NVCReport.m */,
+			);
+			name = Models;
+			path = /Users/dlane/Critic/Critic/Classes/Models;
+			sourceTree = "<absolute>";
 		};
 		CD361114A1606FC4A268DA2A /* Frameworks */ = {
 			isa = PBXGroup;
@@ -394,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				A45AAB412036364000D2978E /* NVCReport.m in Sources */,
 				A45AAB302035F18400D2978E /* Critic.m in Sources */,
 				A45AAB2F2035F18400D2978E /* CriticReportData.m in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

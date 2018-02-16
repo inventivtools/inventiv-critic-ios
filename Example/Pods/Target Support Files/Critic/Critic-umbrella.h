@@ -12,6 +12,8 @@
 
 #import "Critic.h"
 #import "CriticReportData.h"
+#import "NVCReport.h"
+#import "NVCReportCreator.h"
 
 FOUNDATION_EXPORT double CriticVersionNumber;
 FOUNDATION_EXPORT const unsigned char CriticVersionString[];

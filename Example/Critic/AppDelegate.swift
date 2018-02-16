@@ -1,11 +1,4 @@
-//
-//  AppDelegate.swift
-//  Critic
-//
-//  Created by Dave Lane on 02/15/2018.
-//  Copyright (c) 2018 Dave Lane. All rights reserved.
-//
-
+import Critic
 import UIKit
 
 @UIApplicationMain
@@ -15,7 +8,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Critic.instance().setProductAccessToken("YOUR_PRODUCT_ACCESS_TOKEN");
+        Critic.instance().productAccessToken = "NXJMM2CHo5afj9YpauvB1QLk"
+        NSLog("AppDelegate#didFinishLaunchingWithOptions: %@", Critic.instance().productAccessToken)
         return true
     }
 

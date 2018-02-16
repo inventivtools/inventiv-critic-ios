@@ -30,7 +30,7 @@ iOS Library for accepting actionable customer feedback via Inventiv Critic. You 
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'Critic/Classes/**'
+  s.source_files = 'Critic/Classes/**/*'
   
   # s.resource_bundles = {
   #   'Critic' => ['Critic/Assets/*.png']

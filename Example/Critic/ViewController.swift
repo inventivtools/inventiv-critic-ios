@@ -15,8 +15,12 @@ class ViewController: UIViewController {
 
     //MARK: Actions
     @IBAction func sendFeedbackButton() {
-        let report = CriticReportData(description: "Testing from iOS.")
-        Critic.instance().createReport(report, completion:{(success: Bool, error: Error?) in
+        
+        NSLog("ViewController#sendFeedbackButton: %@", Critic.instance().productAccessToken)
+        let reportCreator = NVCReportCreator()
+        reportCreator.description = "Testing from iOS."
+        
+        reportCreator.create({(success: Bool, error: Error?) in
             if success {
                 print("Feedback has been submitted!")
             }
