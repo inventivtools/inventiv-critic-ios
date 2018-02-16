@@ -7,7 +7,7 @@
 @implementation NVCReportCreator
 
 @synthesize description;
-@synthesize attachmentFilePath;
+@synthesize attachmentFilePaths;
 @synthesize metadata;
 
 - (void)create:(void (^)(BOOL success, NSError *))completionBlock{
@@ -25,10 +25,15 @@
     }
     [self addStandardMetadata];
     
-    attachmentFilePath = [[Critic instance] getLogFilePath];
+    if(!attachmentFilePaths){
+        attachmentFilePaths = [NSMutableArray new];
+    }
+    if([[Critic instance] shouldLogToFile]){
+        [attachmentFilePaths addObject:[[Critic instance] getLogFilePath]];
+    }
     
     NSDictionary *params = [self generateParams];
-    NSData *httpBody = [self createBodyWithBoundary:boundary parameters:params path:attachmentFilePath fieldName:@"report[attachments][]"];
+    NSData *httpBody = [self createBodyWithBoundary:boundary parameters:params];
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionTask *task = [session uploadTaskWithRequest:request fromData:httpBody completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -145,7 +150,7 @@
     return params;
 }
 
-- (NSData *)createBodyWithBoundary:(NSString *)boundary parameters:(NSDictionary *)parameters path:(NSString *)path fieldName:(NSString *)fieldName {
+- (NSData *)createBodyWithBoundary:(NSString *)boundary parameters:(NSDictionary *)parameters {
     NSMutableData *httpBody = [NSMutableData data];
     [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
         [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -153,19 +158,20 @@
         [httpBody appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
     }];
     
-    // add file if it exists
-    if(path) {
-        NSString *filename = [path lastPathComponent];
-        NSData *data = [NSData dataWithContentsOfFile:path];
-        NSString *mimetype = [self mimeTypeForPath:path];
-        
-        NSLog(@"Critic - sending %@ with mimetype of %@", filename, mimetype);
-        
-        [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", fieldName, filename] dataUsingEncoding:NSUTF8StringEncoding]];
-        [httpBody appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimetype] dataUsingEncoding:NSUTF8StringEncoding]];
-        [httpBody appendData:data];
-        [httpBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    if(attachmentFilePaths && [attachmentFilePaths count] > 0) {
+        for(id path in attachmentFilePaths){
+            NSString *filename = [path lastPathComponent];
+            NSData *data = [NSData dataWithContentsOfFile:path];
+            NSString *mimetype = [self mimeTypeForPath:path];
+            
+            NSLog(@"Critic - sending %@ with mimetype of %@", filename, mimetype);
+            
+            [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", @"report[attachments][]", filename] dataUsingEncoding:NSUTF8StringEncoding]];
+            [httpBody appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimetype] dataUsingEncoding:NSUTF8StringEncoding]];
+            [httpBody appendData:data];
+            [httpBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        }
     }
     
     [httpBody appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
