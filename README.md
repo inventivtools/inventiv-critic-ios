@@ -32,11 +32,13 @@ Critic.instance().start("YOUR_PRODUCT_ACCESS_TOKEN")
 By default, devices that are not connected to a debug session will pipe console output (`stderr` and `stdout`) to a log file, which is 
 included with submitted Reports. You can disable this behavior prior to starting Critic.
 ```swift
+// Swift
 Critic.instance().shouldLogToFile = false;
 Critic.instance().start("YOUR_PRODUCT_ACCESS_TOKEN")
 ```
 
 ```objective-c
+// Objective-C
 [Critic instance].shouldLogToFile = false;
 [[Critic instance] start:@"YOUR_PRODUCT_ACCESS_TOKEN"];
 ```
@@ -45,10 +47,12 @@ Critic.instance().start("YOUR_PRODUCT_ACCESS_TOKEN")
 
 You can show the default feedback report screen any time you like by calling the following method from a `UIViewController`.
 ```swift
+// Swift
 Critic.instance().showDefaultFeedbackScreen(self)
 ```
 
 ```objective-c
+// Objective-C
 [[Critic instance] showDefaultFeedbackScreen:self];
 ```
 
@@ -56,6 +60,7 @@ Critic.instance().showDefaultFeedbackScreen(self)
 
 Use the `NVCReportCreator` to build your own reports for custom user experiences or other use cases. Perform `NVCReportCreator` work on a background thread.
 ```swift
+// Swift
 let reportCreator = NVCReportCreator()
 reportCreator.description = "This is user-entered text about the idea or experience they wish to report."
 reportCreator.metadata = NSMutableDictionary()
@@ -73,6 +78,7 @@ reportCreator.create({(success: Bool, error: Error?) in
 ```
 
 ```objective-c
+// Objective-C
 NVCReportCreator *reportCreator = [NVCReportCreator new];
 reportCreator.description = @"This is user-entered text about the idea or experience they wish to report.";
 report.metadata = [NSMutableDictionary new];
