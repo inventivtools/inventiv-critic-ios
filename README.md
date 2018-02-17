@@ -37,7 +37,7 @@ Critic.instance().start("YOUR_PRODUCT_ACCESS_TOKEN")
 ```
 
 ```objective-c
-[Critic instance].shouldLogToFile = NO;
+[Critic instance].shouldLogToFile = false;
 [[Critic instance] start:@"YOUR_PRODUCT_ACCESS_TOKEN"];
 ```
 
