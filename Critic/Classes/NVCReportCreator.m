@@ -109,8 +109,8 @@
     [build setObject:[systemServices systemsVersion] forKey:@"version"];
     
     NSMutableDictionary *disk = [NSMutableDictionary new];
-    [disk setObject:[NSNumber numberWithLong:[systemServices longDiskSpace]] forKey:@"total" ];
-    [disk setObject:[NSNumber numberWithLong:[systemServices longFreeDiskSpace]] forKey:@"free" ];
+    [disk setObject:[NSNumber numberWithLongLong:[systemServices longDiskSpace]] forKey:@"total" ];
+    [disk setObject:[NSNumber numberWithLongLong:[systemServices longFreeDiskSpace]] forKey:@"free" ];
     
     NSMutableDictionary *memory = [NSMutableDictionary new];
     [memory setObject:[NSNumber numberWithDouble:[systemServices totalMemory]] forKey:@"total" ];

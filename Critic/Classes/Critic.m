@@ -16,6 +16,9 @@
 }
 
 - (void)start:(NSString *)productAccessToken{
+    NSAssert(productAccessToken && [productAccessToken length] != 0, @"You need to provide a Product Access Token. See the Critic Getting Started Guide at https://inventiv.io/critic/critic-integration-getting-started/.");
+    NSAssert(![productAccessToken isEqualToString:@"YOUR_PRODUCT_ACCESS_TOKEN"], @"Your Product Access Token is invalid. Please use a valid one. See the Critic Getting Started Guide at https://inventiv.io/critic/critic-integration-getting-started/.");
+    
     [self setProductAccessToken:productAccessToken];
 
     if([self shouldLogToFile]){

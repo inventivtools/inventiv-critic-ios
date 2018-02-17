@@ -9,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Critic.instance().shouldLogToFile = false;
-        Critic.instance().start("NXJMM2CHo5afj9YpauvB1QLk")
+        Critic.instance().start("gJ44GxttrahyVBFs4k3jb8T1")
         return true
     }
 
