@@ -43,7 +43,7 @@ Critic.instance().start("YOUR_PRODUCT_ACCESS_TOKEN")
 
 ## Sending Customer Feedback Reports
 
-You can show the default feedback report screen any time you like by calling the following method from a UIViewController.
+You can show the default feedback report screen any time you like by calling the following method from a `UIViewController`.
 ```swift
 Critic.instance().showDefaultFeedbackScreen(self)
 ```
