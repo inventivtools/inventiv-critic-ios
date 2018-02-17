@@ -6,8 +6,10 @@
 @property (nonatomic, strong) NSString *productAccessToken;
 
 + (Critic *)instance;
-- (void)start:(NSString *)productAccessToken;
+
 - (NSString *)getLogFilePath;
+- (void)showDefaultFeedbackScreen:(UIViewController *)viewController;
+- (void)start:(NSString *)productAccessToken;
 
 @end
 

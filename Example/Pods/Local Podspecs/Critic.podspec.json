@@ -19,7 +19,12 @@
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "Critic/Classes/**/*",
+  "source_files": "Critic/Classes/**/*.{h,m,swift}",
+  "resource_bundles": {
+    "Critic": [
+      "Critic/Assets/**/*.{png,storyboard,xib}"
+    ]
+  },
   "dependencies": {
     "SystemServices": [
       "~> 2.0.1"

@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "Critic.h"
+#import "NVCFeedbackViewController.h"
 
 @implementation Critic
 
@@ -29,6 +30,15 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *fileName =[NSString stringWithFormat:@"log01.txt"];
     return [documentsDirectory stringByAppendingPathComponent:fileName];
+}
+
+- (void)showDefaultFeedbackScreen:(UIViewController *)viewController{
+    NSBundle *podBundle = [NSBundle bundleForClass:Critic.self];
+    NSURL *bundleURL = [podBundle URLForResource:@"Critic" withExtension:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FeedbackScreen" bundle: bundle];
+    UIViewController *feedbackViewController = [storyboard instantiateViewControllerWithIdentifier:@"FeedbackScreen"];
+    [viewController presentViewController:feedbackViewController animated:true completion:nil];
 }
 
 @end
