@@ -27,6 +27,7 @@ Critic.instance().start("YOUR_PRODUCT_ACCESS_TOKEN")
 // Objective-C
 [[Critic instance] start:@"YOUR_PRODUCT_ACCESS_TOKEN"];
 ```
+### Configuration
 
 By default, devices that are not connected to a debug session will pipe console output (`stderr` and `stdout`) to a log file, which is 
 included with submitted Reports. You can disable this behavior prior to starting Critic.
