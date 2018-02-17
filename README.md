@@ -1,8 +1,8 @@
-# Inventiv Critic iOS Library
-
 [![Version](https://img.shields.io/cocoapods/v/Critic.svg?style=flat)](http://cocoapods.org/pods/Critic)
 [![License](https://img.shields.io/cocoapods/l/Critic.svg?style=flat)](http://cocoapods.org/pods/Critic)
 [![Platform](https://img.shields.io/cocoapods/p/Critic.svg?style=flat)](http://cocoapods.org/pods/Critic)
+
+# Inventiv Critic iOS Library
 
 Use this library to add [Inventiv Critic](https://inventiv.io/critic/) to your iOS app.
 
