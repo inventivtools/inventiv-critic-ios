@@ -1,6 +1,7 @@
 PODS:
   - Critic (0.0.1):
     - SystemServices (~> 2.0.1)
+    - UITextView+Placeholder (~> 1.2)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
@@ -14,6 +15,7 @@ PODS:
     - Nimble (~> 7.0)
   - Quick (1.2.0)
   - SystemServices (2.0.1)
+  - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
   - Critic (from `../`)
@@ -27,12 +29,13 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Critic: 5c68e55d9f1075dc7814afc355b084b166a70577
+  Critic: 7237ee5997c4e977f63cad75a05c7b9747344818
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   SystemServices: 7af348493ece8951449b476c41532df72569b181
+  UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
 PODFILE CHECKSUM: 2e088b8e0ae98a94947f902d6fb3971444b4fa63
 

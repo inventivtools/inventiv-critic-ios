@@ -1,7 +1,11 @@
 #import <Foundation/Foundation.h>
+#import <UITextView_Placeholder/UITextView+Placeholder.h>
 
 @interface NVCFeedbackViewController : UIViewController
 
-- (IBAction)submitFeedback:(id)sender;
+@property (nonatomic, weak) IBOutlet UITextView *descriptionView;
+
+- (IBAction)cancelAction:(id)sender;
+- (IBAction)submitAction:(id)sender;
 
 @end

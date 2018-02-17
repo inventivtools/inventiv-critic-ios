@@ -393,11 +393,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Critic_Example/Pods-Critic_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Critic/Critic.framework",
 				"${BUILT_PRODUCTS_DIR}/SystemServices/SystemServices.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Critic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SystemServices.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

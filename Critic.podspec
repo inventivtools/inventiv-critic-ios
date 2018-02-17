@@ -40,4 +40,5 @@ iOS Library for accepting actionable customer feedback via Inventiv Critic. You 
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'SystemServices', '~> 2.0.1'
+  s.dependency 'UITextView+Placeholder', '~> 1.2'
 end

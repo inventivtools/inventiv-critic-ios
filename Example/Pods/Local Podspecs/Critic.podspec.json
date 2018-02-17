@@ -28,6 +28,9 @@
   "dependencies": {
     "SystemServices": [
       "~> 2.0.1"
+    ],
+    "UITextView+Placeholder": [
+      "~> 1.2"
     ]
   }
 }
