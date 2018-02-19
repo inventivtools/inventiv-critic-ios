@@ -63,9 +63,7 @@ Use the `NVCReportCreator` to build your own reports for custom user experiences
 // Swift
 let reportCreator = NVCReportCreator()
 reportCreator.description = "This is user-entered text about the idea or experience they wish to report."
-reportCreator.metadata = NSMutableDictionary()
 reportCreator.metadata["Whatever key you want"] = "Whatever value you want"
-reportCreator.attachmentFilePaths = NSMutableArray()
 reportCreator.attachmentFilePaths.add("/absolute/path/to/desired/file.txt")
 reportCreator.create({(success: Bool, error: Error?) in
     if success {
@@ -81,9 +79,7 @@ reportCreator.create({(success: Bool, error: Error?) in
 // Objective-C
 NVCReportCreator *reportCreator = [NVCReportCreator new];
 reportCreator.description = @"This is user-entered text about the idea or experience they wish to report.";
-report.metadata = [NSMutableDictionary new];
 [report.metadata setObject:@"Whatever value you like" forKey:@"Whatever key you want"];
-report.attachmentFilePaths = [NSMutableArray new];
 [report.attachmentFilePaths addObject:@"/absolute/path/to/desired/file.txt"];
 [reportCreator create:^(BOOL success, NSError *error){
     if(success){

@@ -10,6 +10,13 @@
 @synthesize description;
 @synthesize metadata;
 
+- (instancetype)init {
+    self = [super init];
+    metadata = [NSMutableDictionary new];
+    attachmentFilePaths = [NSMutableArray new];
+    return self;
+}
+
 - (void)create:(void (^)(BOOL success, NSError *))completionBlock{
 
     NSURL *url = [NSURL URLWithString:@"https://critic.inventiv.io/api/v1/reports"];
