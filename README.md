@@ -29,6 +29,7 @@ Critic.instance().start("YOUR_PRODUCT_ACCESS_TOKEN")
 ```
 ### Configuration
 
+#### Shake to Send Feedback Report
 By default, Critic will prompt your users for feedback when they shake their device. You can disable this if desired.
 ```swift
 // Swift
@@ -40,6 +41,8 @@ Critic.instance().preventShakeDetection()
 [[Critic instance] preventShakeDetection];
 ```
 
+#### Log Capture
+
 By default, devices that are not connected to a debug session will pipe console output (`stderr` and `stdout`) to a log file, which is 
 included with submitted Reports. You can disable this behavior prior to starting Critic.
 ```swift
@@ -50,6 +53,17 @@ Critic.instance().preventLogCapture()
 ```objective-c
 // Objective-C
 [[Critic instance] preventLogCapture];
+```
+
+If you are running a simulator and want to capture logs from the console, you can explicitly start log capture yourself.
+```swift
+// Swift
+Critic.instance().startLogCapture()
+```
+
+```objective-c
+// Objective-C
+[[Critic instance] startLogCapture];
 ```
 
 ## Sending Customer Feedback Reports
@@ -64,6 +78,8 @@ Critic.instance().showDefaultFeedbackScreen(self)
 // Objective-C
 [[Critic instance] showDefaultFeedbackScreen:self];
 ```
+
+### Change Text on Default Feedback Screens.
 
 The text shown on the default feedback report screen and the shake detection dialog can be customized to your liking.
 ```swift

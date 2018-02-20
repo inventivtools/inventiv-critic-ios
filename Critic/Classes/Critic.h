@@ -17,7 +17,7 @@
 - (void)preventShakeDetection;
 - (void)showDefaultFeedbackScreen:(UIViewController *)viewController;
 - (void)start:(NSString *)productAccessToken;
-- (void)startLogFileCapture;
+- (void)startLogCapture;
 
 
 @end

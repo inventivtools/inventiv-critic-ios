@@ -31,7 +31,7 @@
                     [[_self rootViewController] dismissViewControllerAnimated:false completion:nil];
                     [[Critic instance] showDefaultFeedbackScreen:[_self rootViewController]];
                 }]];
-                [alert addAction:[UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+                [alert addAction:[UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action){
                     [[_self rootViewController] dismissViewControllerAnimated:false completion:nil];
                 }]];
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -51,7 +51,7 @@
     
     [self setProductAccessToken:productAccessToken];
     if([self shouldLogToFile]){
-        [self startLogFileCapture];
+        [self startLogCapture];
     }
 }
 
@@ -78,8 +78,9 @@
     UIViewController *feedbackViewController = [storyboard instantiateViewControllerWithIdentifier:@"FeedbackScreen"];
     [viewController presentViewController:feedbackViewController animated:true completion:nil];
 }
-- (void)startLogFileCapture{
+- (void)startLogCapture{
     [self setShouldLogToFile:true];
+    NSLog(@"Critic - Starting log file capture. If you wish to prevent this, call preventLogCapture() before start().");
     NSString *logFilePath = [self getLogFilePath];
     freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
     freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stdout);
