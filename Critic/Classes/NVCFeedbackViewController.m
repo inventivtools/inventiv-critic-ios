@@ -1,3 +1,4 @@
+#import "Critic.h"
 #import <Foundation/Foundation.h>
 #import "NVCFeedbackViewController.h"
 #import "NVCReportCreator.h"
@@ -7,6 +8,8 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [[self titleView] setTitle:[[Critic instance] defaultFeedbackScreenTitle]];
+    [[self descriptionView] setPlaceholder:[[Critic instance] defaultFeedbackScreenDescriptionPlaceholder]];
     [[self descriptionView] becomeFirstResponder];
 }
 

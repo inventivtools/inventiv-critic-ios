@@ -4,6 +4,7 @@
 @interface NVCFeedbackViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UITextView *descriptionView;
+@property (nonatomic, weak) IBOutlet UINavigationItem *titleView;
 
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)submitAction:(id)sender;

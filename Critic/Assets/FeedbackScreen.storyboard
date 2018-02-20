@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +13,6 @@
         <!--Feedback View Controller-->
         <scene sceneID="2b8-Xf-5kU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hsv-h8-Rr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="FeedbackScreen" id="ZLh-30-XC5" customClass="NVCFeedbackViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c2y-xk-OVx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -67,8 +67,10 @@
                     </view>
                     <connections>
                         <outlet property="descriptionView" destination="lTc-Kr-8Es" id="FHK-A3-0JO"/>
+                        <outlet property="titleView" destination="hca-Yr-VnY" id="wfH-Qj-2Xq"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hsv-h8-Rr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-480.80000000000001" y="-353.07346326836586"/>
         </scene>
