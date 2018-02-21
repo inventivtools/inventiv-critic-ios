@@ -11,7 +11,6 @@
 #endif
 
 #import "Critic.h"
-#import "NVCReport.h"
 #import "NVCFeedbackViewController.h"
 #import "NVCReportCreator.h"
 

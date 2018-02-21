@@ -14,7 +14,6 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		A45AAB412036364000D2978E /* NVCReport.m in Sources */ = {isa = PBXBuildFile; fileRef = A45AAB402036364000D2978E /* NVCReport.m */; };
 		C37CEB1E10E098F6C2C2FE36 /* Pods_Critic_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86C31FFEA02678F14892F55 /* Pods_Critic_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +47,6 @@
 		A45AAB312035F62000D2978E /* Critic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Critic-Bridging-Header.h"; path = "../Critic-Bridging-Header.h"; sourceTree = "<group>"; };
 		A45AAB382036335300D2978E /* NVCReportCreator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NVCReportCreator.m; path = ../Critic/Classes/NVCReportCreator.m; sourceTree = "<group>"; wrapsLines = 0; };
 		A45AAB392036336A00D2978E /* NVCReportCreator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NVCReportCreator.h; path = ../Critic/Classes/NVCReportCreator.h; sourceTree = "<group>"; };
-		A45AAB3F2036364000D2978E /* NVCReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVCReport.h; sourceTree = "<group>"; };
-		A45AAB402036364000D2978E /* NVCReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVCReport.m; sourceTree = "<group>"; };
 		A4DE320C20369A6B00BD83BB /* Critic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Critic.m; path = ../Critic/Classes/Critic.m; sourceTree = "<group>"; wrapsLines = 0; };
 		A4DE320D20369A9400BD83BB /* Critic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Critic.h; path = ../Critic/Classes/Critic.h; sourceTree = "<group>"; };
 		A4E3FFBB20379628000058A3 /* FeedbackScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = FeedbackScreen.storyboard; path = ../Critic/Assets/FeedbackScreen.storyboard; sourceTree = "<group>"; };
@@ -99,7 +96,6 @@
 				A4E3FFBB20379628000058A3 /* FeedbackScreen.storyboard */,
 				A4DE320D20369A9400BD83BB /* Critic.h */,
 				A4DE320C20369A6B00BD83BB /* Critic.m */,
-				A45AAB3E203635F600D2978E /* Models */,
 				A45AAB392036336A00D2978E /* NVCReportCreator.h */,
 				A45AAB382036335300D2978E /* NVCReportCreator.m */,
 				A45AAB312035F62000D2978E /* Critic-Bridging-Header.h */,
@@ -169,16 +165,6 @@
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
-		};
-		A45AAB3E203635F600D2978E /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				A45AAB3F2036364000D2978E /* NVCReport.h */,
-				A45AAB402036364000D2978E /* NVCReport.m */,
-			);
-			name = Models;
-			path = /Users/dlane/Critic/Critic/Classes/Models;
-			sourceTree = "<absolute>";
 		};
 		CD361114A1606FC4A268DA2A /* Frameworks */ = {
 			isa = PBXGroup;
@@ -414,7 +400,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				A45AAB412036364000D2978E /* NVCReport.m in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
