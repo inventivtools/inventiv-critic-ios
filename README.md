@@ -6,6 +6,8 @@
 
 Use this library to add [Inventiv Critic](https://inventiv.io/critic/) to your iOS app.
 
+![Critic iOS feedback reporting screen](https://assets.inventiv.io/github/inventiv-critic-ios/critic-ios-half-shot-feedback-screen.png)
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -133,6 +135,12 @@ reportCreator.description = @"This is user-entered text about the idea or experi
     }
 }];
 ```
+
+## Viewing Feedback Reports
+Visit the [Critic web portal](https://critic.inventiv.io/) to view submitted reports. Below is some of the device and app-specific information included with every iOS report.
+
+![Critic iOS app info as view in the web portal](https://assets.inventiv.io/github/inventiv-critic-ios/critic-ios-app-info.png)
+![Critic iOS device info as view in the web portal](https://assets.inventiv.io/github/inventiv-critic-ios/critic-ios-device-info.png)
 
 ## License
 
