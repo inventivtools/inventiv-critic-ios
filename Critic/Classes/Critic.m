@@ -14,7 +14,7 @@
         
         // set defaults
         [_instance setDefaultFeedbackScreenDescriptionPlaceholder:@"What's happening?\n\nPlease describe your problem or suggestion in as much detail as possible. Thank you for helping us out! 🙂"];
-        [_instance setDefaultFeedbackScreenTitle:@"Submit Feedback"];
+        [_instance setDefaultFeedbackScreenTitle:@"Feedback"];
         [_instance setDefaultShakeNotificationMessage:@"Do you want to send us feedback?"];
         [_instance setDefaultShakeNotificationTitle:@"Easy, easy!"];
         [_instance setShouldRespondToShake:true];
