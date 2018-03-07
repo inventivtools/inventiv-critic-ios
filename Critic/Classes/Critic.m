@@ -17,6 +17,7 @@
         [_instance setDefaultFeedbackScreenTitle:@"Feedback"];
         [_instance setDefaultShakeNotificationMessage:@"Do you want to send us feedback?"];
         [_instance setDefaultShakeNotificationTitle:@"Easy, easy!"];
+        [_instance setProductMetadata:[NSMutableDictionary new]];
         [_instance setShouldRespondToShake:true];
         
         // default to capturing console output to a log file if there is no debugger attached.

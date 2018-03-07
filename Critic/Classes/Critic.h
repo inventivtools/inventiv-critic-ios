@@ -9,6 +9,7 @@
 @property (nonatomic) Boolean shouldLogToFile;
 @property (nonatomic) Boolean shouldRespondToShake;
 @property (nonatomic, strong) NSString *productAccessToken;
+@property (nonatomic, strong) NSMutableDictionary *productMetadata;
 
 + (Critic *)instance;
 

@@ -102,6 +102,19 @@ Critic.instance().setDefaultFeedbackScreenDescriptionPlaceholder("What's happeni
 [[Critic instance] setDefaultFeedbackScreenDescriptionPlaceholder:@"What's happening?\n\nPlease describe your problem or suggestion in as much detail as possible. Thank you for helping us out! 🙂"];
 ``` 
 
+### Sending Product-Specific Metadata with Reports.
+
+You can add product-specific metadata through adding entries to the `Critic.instance().productMetadata` dictionary.
+```swift
+// Swift
+Critic.instance().productMetadata["email"] = "test@example.com"
+```
+
+```objective-c
+// Objective-C
+[[[Critic instance] productMetadata] setObject:@"test@example.com" forKey:@"email"];
+```
+
 ## Customizing Feedback Reports
 
 Use the `NVCReportCreator` to build your own reports for custom user experiences or other use cases. Perform `NVCReportCreator` work on a background thread.

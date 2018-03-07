@@ -149,6 +149,14 @@
     [device setObject:[systemServices processorsUsage] forKey:@"processors"];
     [device setObject:[myDevice systemName] forKey:@"platform"];
     [metadata setObject:device forKey:@"ic_device"];
+    
+    NSMutableDictionary* productMetadata = [[Critic instance] productMetadata];
+    if(productMetadata && [[productMetadata allKeys] count] > 0) {
+        for(id key in productMetadata) {
+            id value = [productMetadata objectForKey:key];
+            [metadata setObject:value forKey:key];
+        }
+    }
 }
 
 - (NSDictionary *)generateParams{
