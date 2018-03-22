@@ -12,6 +12,7 @@
 
 #import "Critic.h"
 #import "NVCFeedbackViewController.h"
+#import "NVCPingCreator.h"
 #import "NVCReportCreator.h"
 
 FOUNDATION_EXPORT double CriticVersionNumber;

@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "Critic.h"
 #import "NVCFeedbackViewController.h"
+#import "NVCPingCreator.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
 
@@ -54,6 +55,18 @@
     if([self shouldLogToFile]){
         [self startLogCapture];
     }
+    
+    NVCPingCreator *pingCreator = [NVCPingCreator new];
+    dispatch_queue_t queue = dispatch_queue_create("io.inventiv.critic.ping.create", NULL);
+    dispatch_async(queue, ^{
+        [pingCreator create:^(BOOL success, NSError *error){
+            if(success){
+                // yay!
+            } else {
+                // boo.
+            }
+        }];
+    });
 }
 
 - (NSString *)getLogFilePath{

@@ -2,6 +2,7 @@
 
 @interface Critic : NSObject
 
+@property (nonatomic, strong) NSString *appInstallId;
 @property (nonatomic, strong) NSString *defaultFeedbackScreenDescriptionPlaceholder;
 @property (nonatomic, strong) NSString *defaultFeedbackScreenTitle;
 @property (nonatomic, strong) NSString *defaultShakeNotificationMessage;

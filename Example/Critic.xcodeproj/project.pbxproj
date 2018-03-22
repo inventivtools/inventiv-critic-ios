@@ -47,6 +47,8 @@
 		A45AAB312035F62000D2978E /* Critic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Critic-Bridging-Header.h"; path = "../Critic-Bridging-Header.h"; sourceTree = "<group>"; };
 		A45AAB382036335300D2978E /* NVCReportCreator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NVCReportCreator.m; path = ../Critic/Classes/NVCReportCreator.m; sourceTree = "<group>"; wrapsLines = 0; };
 		A45AAB392036336A00D2978E /* NVCReportCreator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NVCReportCreator.h; path = ../Critic/Classes/NVCReportCreator.h; sourceTree = "<group>"; };
+		A4783C462064430500BA90FF /* NVCPingCreator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NVCPingCreator.m; path = ../Critic/Classes/NVCPingCreator.m; sourceTree = "<group>"; };
+		A4783C472064431D00BA90FF /* NVCPingCreator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NVCPingCreator.h; path = ../Critic/Classes/NVCPingCreator.h; sourceTree = "<group>"; };
 		A4DE320C20369A6B00BD83BB /* Critic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Critic.m; path = ../Critic/Classes/Critic.m; sourceTree = "<group>"; wrapsLines = 0; };
 		A4DE320D20369A9400BD83BB /* Critic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Critic.h; path = ../Critic/Classes/Critic.h; sourceTree = "<group>"; };
 		A4E3FFBB20379628000058A3 /* FeedbackScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = FeedbackScreen.storyboard; path = ../Critic/Assets/FeedbackScreen.storyboard; sourceTree = "<group>"; };
@@ -91,6 +93,8 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				A4783C472064431D00BA90FF /* NVCPingCreator.h */,
+				A4783C462064430500BA90FF /* NVCPingCreator.m */,
 				A4E3FFBD203797A3000058A3 /* NVCFeedbackViewController.h */,
 				A4E3FFBC2037974E000058A3 /* NVCFeedbackViewController.m */,
 				A4E3FFBB20379628000058A3 /* FeedbackScreen.storyboard */,

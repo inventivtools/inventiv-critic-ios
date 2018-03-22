@@ -19,7 +19,7 @@
 
 - (void)create:(void (^)(BOOL success, NSError *))completionBlock{
 
-    NSURL *url = [NSURL URLWithString:@"https://critic.inventiv.io/api/v1/reports"];
+    NSURL *url = [NSURL URLWithString:@"https://critic.inventiv.io/api/v2/bug_reports"];
     NSString *boundary = [NSString stringWithFormat:@"Boundary-%@", [[NSUUID UUID] UUIDString]];
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     
@@ -160,15 +160,14 @@
 }
 
 - (NSDictionary *)generateParams{
-    NSError* error;
-    NSData* metadataJsonData = [NSJSONSerialization dataWithJSONObject:metadata options:(NSJSONWritingOptions) 0 error:&error];
-    NSString* metadataJsonString = [[NSString alloc] initWithData:metadataJsonData encoding:NSUTF8StringEncoding];
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    [params setObject:[[Critic instance] productAccessToken] forKey:@"api_token"];
+    [params setObject:[[Critic instance] appInstallId] forKey:@"app_install[id]"];
+    [params setObject:description forKey:@"bug_report[description]"];
+    if([[Critic instance] productMetadata] != nil){
+        [params setObject:[[Critic instance] productMetadata] forKey:@"bug_report[metadata]"];
+    }
     
-    NSDictionary *params = @{
-        @"report[product_access_token]" : [[Critic instance] productAccessToken],
-        @"report[description]" : description != nil ? description : @"",
-        @"report[metadata]" : metadataJsonString != nil ? metadataJsonString : @"{}",
-    };
     return params;
 }
 
@@ -188,7 +187,7 @@
             
             NSLog(@"Critic - sending %@ with mimetype of %@", filename, mimetype);
             [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", @"report[attachments][]", filename] dataUsingEncoding:NSUTF8StringEncoding]];
+            [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", @"bug_report[attachments][]", filename] dataUsingEncoding:NSUTF8StringEncoding]];
             [httpBody appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimetype] dataUsingEncoding:NSUTF8StringEncoding]];
             [httpBody appendData:data];
             [httpBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
