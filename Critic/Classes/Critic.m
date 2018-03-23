@@ -1,11 +1,17 @@
 #import <Foundation/Foundation.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 #import "Critic.h"
 #import "NVCFeedbackViewController.h"
 #import "NVCPingCreator.h"
+#import "SystemServices.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
 
 @implementation Critic
+
++ (NSString *)API_BASE_URL{
+    return @"https://critic.inventiv.io";
+}
 
 + (Critic *)instance{
     static Critic *_instance = nil;
@@ -69,6 +75,48 @@
     });
 }
 
+- (NSMutableDictionary *)generateDeviceStatus{
+    SystemServices* systemServices = [SystemServices sharedServices];
+    
+    UIDevice *myDevice = [UIDevice currentDevice];
+    [myDevice setBatteryMonitoringEnabled:YES];
+    
+    NSString* batteryStateString = nil;
+    switch([myDevice batteryState]) {
+        case UIDeviceBatteryStateUnknown:
+            batteryStateString = @"Unknown";
+            break;
+        case UIDeviceBatteryStateFull:
+            batteryStateString = @"Full";
+            break;
+        case UIDeviceBatteryStateCharging:
+            batteryStateString = @"Charging";
+            break;
+        case UIDeviceBatteryStateUnplugged:
+            batteryStateString = @"Unplugged";
+        default:
+            batteryStateString = @"Unknown";
+            break;
+    }
+    
+    NSMutableDictionary *deviceStatus = [NSMutableDictionary new];
+    [deviceStatus setObject:@([SSHardwareInfo pluggedIn]) forKey:@"battery_charging"];
+    [deviceStatus setObject:[NSNumber numberWithFloat:[systemServices batteryLevel]] forKey:@"battery_level"];
+    [deviceStatus setObject:batteryStateString forKey:@"battery_health"];
+    [deviceStatus setObject:[NSNumber numberWithLongLong:[systemServices longFreeDiskSpace]] forKey:@"disk_free" ];
+    [deviceStatus setObject:[NSNumber numberWithLongLong:[systemServices longDiskSpace]] forKey:@"disk_total" ];
+    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices activeMemoryinRaw]] forKey:@"memory_active" ];
+    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices freeMemoryinRaw]] forKey:@"memory_free" ];
+    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices inactiveMemoryinRaw]] forKey:@"memory_inactive" ];
+    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices purgableMemoryinRaw]] forKey:@"memory_purgable" ];
+    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices totalMemory]] forKey:@"memory_total" ];
+    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices wiredMemoryinRaw]] forKey:@"memory_wired" ];
+    [deviceStatus setObject:@([systemServices connectedToCellNetwork]) forKey:@"network_cell_connected" ];
+    [deviceStatus setObject:@([systemServices connectedToWiFi]) forKey:@"network_wifi_connected" ];
+    
+    return deviceStatus;
+}
+
 - (NSString *)getLogFilePath{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -92,6 +140,7 @@
     UIViewController *feedbackViewController = [storyboard instantiateViewControllerWithIdentifier:@"FeedbackScreen"];
     [viewController presentViewController:feedbackViewController animated:true completion:nil];
 }
+
 - (void)startLogCapture{
     [self setShouldLogToFile:true];
     NSLog(@"Critic - Starting log file capture. If you wish to prevent this, call preventLogCapture() before start().");

@@ -8,7 +8,7 @@
 
 - (void)create:(void (^)(BOOL success, NSError *))completionBlock{
     
-    NSURL *url = [NSURL URLWithString:@"https://critic.inventiv.io/api/v2/ping"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [Critic API_BASE_URL], @"/api/v2/ping"]];
     NSMutableURLRequest *request = nil;
     @try {
         request = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -53,27 +53,7 @@
 
 - (NSDictionary *)generateParams{
     SystemServices* systemServices = [SystemServices sharedServices];
-    
     UIDevice *myDevice = [UIDevice currentDevice];
-    [myDevice setBatteryMonitoringEnabled:YES];
-    
-    NSString* batteryStateString = nil;
-    switch([myDevice batteryState]) {
-        case UIDeviceBatteryStateUnknown:
-            batteryStateString = @"Unknown";
-            break;
-        case UIDeviceBatteryStateFull:
-            batteryStateString = @"Full";
-            break;
-        case UIDeviceBatteryStateCharging:
-            batteryStateString = @"Charging";
-            break;
-        case UIDeviceBatteryStateUnplugged:
-            batteryStateString = @"Unplugged";
-        default:
-            batteryStateString = @"Unknown";
-            break;
-    }
     
     NSMutableDictionary *app = [NSMutableDictionary new];
     NSBundle *bundle = [NSBundle mainBundle];
@@ -98,26 +78,11 @@
     [device setObject:@"iOS" forKey:@"platform"];
     [device setObject:[systemServices systemsVersion] forKey:@"platform_version"];
     
-    NSMutableDictionary *deviceStatus = [NSMutableDictionary new];
-    [deviceStatus setObject:@([SSHardwareInfo pluggedIn]) forKey:@"battery_charging"];
-    [deviceStatus setObject:[NSNumber numberWithFloat:[systemServices batteryLevel]] forKey:@"battery_level"];
-    [deviceStatus setObject:batteryStateString forKey:@"battery_health"];
-    [deviceStatus setObject:[NSNumber numberWithLongLong:[systemServices longFreeDiskSpace]] forKey:@"disk_free" ];
-    [deviceStatus setObject:[NSNumber numberWithLongLong:[systemServices longDiskSpace]] forKey:@"disk_total" ];
-    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices activeMemoryinRaw]] forKey:@"memory_active" ];
-    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices freeMemoryinRaw]] forKey:@"memory_free" ];
-    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices inactiveMemoryinRaw]] forKey:@"memory_inactive" ];
-    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices purgableMemoryinRaw]] forKey:@"memory_purgable" ];
-    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices totalMemory]] forKey:@"memory_total" ];
-    [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices wiredMemoryinRaw]] forKey:@"memory_wired" ];
-    [deviceStatus setObject:@([systemServices connectedToCellNetwork]) forKey:@"network_cell_connected" ];
-    [deviceStatus setObject:@([systemServices connectedToWiFi]) forKey:@"network_wifi_connected" ];
-    
     NSMutableDictionary *params = [NSMutableDictionary new];
     [params setObject:[[Critic instance] productAccessToken] forKey:@"api_token"];
     [params setObject:app forKey:@"app"];
     [params setObject:device forKey:@"device"];
-    [params setObject:deviceStatus forKey:@"device_status"];
+    [params setObject:[[Critic instance] generateDeviceStatus] forKey:@"device_status"];
     
     return params;
 }

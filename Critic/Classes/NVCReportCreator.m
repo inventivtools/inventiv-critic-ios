@@ -19,7 +19,7 @@
 
 - (void)create:(void (^)(BOOL success, NSError *))completionBlock{
 
-    NSURL *url = [NSURL URLWithString:@"https://critic.inventiv.io/api/v2/bug_reports"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [Critic API_BASE_URL], @"/api/v2/bug_reports"]];
     NSString *boundary = [NSString stringWithFormat:@"Boundary-%@", [[NSUUID UUID] UUIDString]];
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     
@@ -165,8 +165,11 @@
     [params setObject:[[Critic instance] appInstallId] forKey:@"app_install[id]"];
     [params setObject:description forKey:@"bug_report[description]"];
     if([[Critic instance] productMetadata] != nil){
-        [params setObject:[[Critic instance] productMetadata] forKey:@"bug_report[metadata]"];
+        NSData *metadataData = [NSJSONSerialization dataWithJSONObject:[[Critic instance] productMetadata] options:0 error:nil];
+        [params setObject:[[NSString alloc] initWithData:metadataData encoding:NSUTF8StringEncoding] forKey:@"bug_report[metadata]"];
     }
+    NSData *deviceStatusData = [NSJSONSerialization dataWithJSONObject:[[Critic instance] generateDeviceStatus] options:0 error:nil];
+    [params setObject:[[NSString alloc] initWithData:deviceStatusData encoding:NSUTF8StringEncoding] forKey:@"device_status"];
     
     return params;
 }
@@ -175,6 +178,9 @@
     NSMutableData *httpBody = [NSMutableData data];
     [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
         [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        if([parameterKey isEqualToString:@"device_status"]) {
+            [httpBody appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n", @"application/json"] dataUsingEncoding:NSUTF8StringEncoding]];
+        }
         [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", parameterKey] dataUsingEncoding:NSUTF8StringEncoding]];
         [httpBody appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
     }];

@@ -12,6 +12,8 @@
 @property (nonatomic, strong) NSString *productAccessToken;
 @property (nonatomic, strong) NSMutableDictionary *productMetadata;
 
+
++ (NSString *)API_BASE_URL;
 + (Critic *)instance;
 
 - (NSString *)getLogFilePath;
@@ -20,6 +22,7 @@
 - (void)showDefaultFeedbackScreen:(UIViewController *)viewController;
 - (void)start:(NSString *)productAccessToken;
 - (void)startLogCapture;
+- (NSMutableDictionary *)generateDeviceStatus;
 
 
 @end

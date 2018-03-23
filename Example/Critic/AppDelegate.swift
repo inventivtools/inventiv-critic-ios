@@ -10,6 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Critic.instance().startLogCapture()
         Critic.instance().start("gJ44GxttrahyVBFs4k3jb8T1")
+        Critic.instance().productMetadata["test_key"] = "test_value";
         return true
     }
 
