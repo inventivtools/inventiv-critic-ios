@@ -1,42 +1,27 @@
 PODS:
   - Critic (0.1.3):
     - SystemServices (~> 2.0.1)
-    - UITextView+Placeholder (~> 1.2)
-  - FBSnapshotTestCase (2.1.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
-  - FBSnapshotTestCase/Core (2.1.4)
-  - FBSnapshotTestCase/SwiftSupport (2.1.4):
-    - FBSnapshotTestCase/Core
-  - Nimble (7.0.3)
-  - Nimble-Snapshots (6.3.0):
-    - Nimble-Snapshots/Core (= 6.3.0)
-  - Nimble-Snapshots/Core (6.3.0):
-    - FBSnapshotTestCase (~> 2.0)
-    - Nimble (~> 7.0)
-  - Quick (1.2.0)
+    - "UITextView+Placeholder (~> 1.2)"
   - SystemServices (2.0.1)
-  - UITextView+Placeholder (1.2.0)
+  - "UITextView+Placeholder (1.4.0)"
 
 DEPENDENCIES:
   - Critic (from `../`)
-  - FBSnapshotTestCase (~> 2.1.4)
-  - Nimble (~> 7.0.2)
-  - Nimble-Snapshots (~> 6.3.0)
-  - Quick (~> 1.2.0)
+
+SPEC REPOS:
+  trunk:
+    - SystemServices
+    - "UITextView+Placeholder"
 
 EXTERNAL SOURCES:
   Critic:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Critic: 77c0b2bdbe342e726d729be2389508f1d0f62514
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
-  Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  Critic: 0ef002020badef96b0e4c7c1a4aacc60b63e0731
   SystemServices: 7af348493ece8951449b476c41532df72569b181
-  UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
+  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: a75b624bc98eb4cd0f59c765934314862a24abf8
+PODFILE CHECKSUM: 40596c5a9a4a3a1a020a790ba4c49553e96cc79f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.12.0

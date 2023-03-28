@@ -24,6 +24,7 @@
         [_instance setDefaultFeedbackScreenTitle:@"Feedback"];
         [_instance setDefaultShakeNotificationMessage:@"Do you want to send us feedback?"];
         [_instance setDefaultShakeNotificationTitle:@"Easy, easy!"];
+        [_instance setDeviceMetadata:[NSMutableDictionary new]];
         [_instance setProductMetadata:[NSMutableDictionary new]];
         [_instance setShouldRespondToShake:true];
         
@@ -67,9 +68,9 @@
     dispatch_async(queue, ^{
         [pingCreator create:^(BOOL success, NSError *error){
             if(success){
-                // yay!
+                NSLog(@"Critic - Successfully pinged Critic.");
             } else {
-                // boo.
+                NSLog(@"Critic - Failed to ping Critic.");
             }
         }];
     });
@@ -113,6 +114,11 @@
     [deviceStatus setObject:[NSNumber numberWithDouble:[systemServices wiredMemoryinRaw]] forKey:@"memory_wired" ];
     [deviceStatus setObject:@([systemServices connectedToCellNetwork]) forKey:@"network_cell_connected" ];
     [deviceStatus setObject:@([systemServices connectedToWiFi]) forKey:@"network_wifi_connected" ];
+    
+    if([[Critic instance] deviceMetadata] != nil){
+        NSData *metadataData = [NSJSONSerialization dataWithJSONObject:[[Critic instance] deviceMetadata] options:0 error:nil];
+        [deviceStatus setObject:[[NSString alloc] initWithData:metadataData encoding:NSUTF8StringEncoding] forKey:@"metadata"];
+    }
     
     return deviceStatus;
 }

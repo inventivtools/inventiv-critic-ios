@@ -20,26 +20,44 @@ pod 'UITextView+Placeholder'
 Usage
 -----
 
-Create `UITextView`, then set `placeholder`.
+- **Import Dynamic Framework**:
 
-```objc
-UITextView *textView = [[UITextView alloc] init];
-textView.placeholder = @"How are you?";
-textView.placeholderColor = [UIColor lightGrayColor]; // optional
-```
+    e.g. If you're using CocoaPods with `use_frameworks!` flag.
 
-Congratulations! You're done.
+    ```objc
+    @import UITextView_Placeholder;
+    ```
+    
+- **Import Static Library**:
 
---
+    ```objc
+    #import <UITextView+Placeholder/UITextView+Placeholder.h>
+    ```
 
-Since 1.1.0 you can use `attributedPlaceholder`.
+Then create `UITextView` and set `placeholder`.
 
-```objc
-textView.attributedPlaceholder = ... // NSAttributedString
-```
+- **Implement Objective-C**:
+
+    ```objc
+    UITextView *textView = [[UITextView alloc] init];
+    textView.placeholder = @"How are you?";
+    textView.placeholderColor = [UIColor lightGrayColor]; // optional
+    textView.attributedPlaceholder = ... // NSAttributedString (optional)
+    ```
+
+- **Implement Swift**:
+
+    ```swift
+    let textView = UITextView()
+    textView.placeholder = "How are you?"
+    textView.placeholderColor = UIColor.lightGray // optional
+    textView.attributedPlaceholder = ... // NSAttributedString (optional)
+    ```
+
+Congratulations! You're done. 🎉
 
 
 License
 -------
 
-UITextView+Placeholder is under MIT license. See LICENSE for more information.
+UITextView+Placeholder is under MIT license. See the [LICENSE](LICENSE) file for more information.

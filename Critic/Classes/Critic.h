@@ -7,6 +7,7 @@
 @property (nonatomic, strong) NSString *defaultFeedbackScreenTitle;
 @property (nonatomic, strong) NSString *defaultShakeNotificationMessage;
 @property (nonatomic, strong) NSString *defaultShakeNotificationTitle;
+@property (nonatomic, strong) NSMutableDictionary *deviceMetadata;
 @property (nonatomic) Boolean shouldLogToFile;
 @property (nonatomic) Boolean shouldRespondToShake;
 @property (nonatomic, strong) NSString *productAccessToken;
