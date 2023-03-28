@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Critic'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'iOS Library for accepting actionable customer feedback via Inventiv Critic.'
 
 # This description is used to generate tags and improve search results.
