@@ -102,7 +102,7 @@ Critic.instance().setDefaultFeedbackScreenDescriptionPlaceholder("What's happeni
 [[Critic instance] setDefaultFeedbackScreenDescriptionPlaceholder:@"What's happening?\n\nPlease describe your problem or suggestion in as much detail as possible. Thank you for helping us out! 🙂"];
 ``` 
 
-### Sending Product-Specific Metadata with Reports.
+### Sending Product-Specific Metadata with Reports
 
 You can add product-specific metadata through adding entries to the `Critic.instance().productMetadata` dictionary.
 ```swift
@@ -114,6 +114,22 @@ Critic.instance().productMetadata["email"] = "test@example.com"
 // Objective-C
 [[[Critic instance] productMetadata] setObject:@"test@example.com" forKey:@"email"];
 ```
+
+### Sending Device-Specific Metadata
+
+You can add device-specific metadata through adding entries to the `Critic.instance().deviceMetadata` dictionary.
+```swift
+// Swift
+Critic.instance().deviceMetadata["device_uuid"] = "abc123"
+```
+
+```objective-c
+// Objective-C
+[[[Critic instance] deviceMetadata] setObject:@"abc123" forKey:@"device_uuid"];
+```
+
+Be sure to set your metadata values prior to calling `Critic.instance().start()` if you wish to include the metadata with every device ping.
+Metdata added after starting will only be added to bug report submissions.
 
 ## Customizing Feedback Reports
 
