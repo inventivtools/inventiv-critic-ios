@@ -171,6 +171,25 @@ Visit the [Critic web portal](https://critic.inventiv.io/) to view submitted rep
 ![Critic iOS app info as view in the web portal](https://assets.inventiv.io/github/inventiv-critic-ios/critic-ios-app-info.png)
 ![Critic iOS device info as view in the web portal](https://assets.inventiv.io/github/inventiv-critic-ios/critic-ios-device-info.png)
 
+## Library Development
+
+The following steps are only necessary if you plan to contribute to this library.
+You do not need to do these steps if you simply wish to use Critic in your app.
+
+### Setup
+
+1. Clone this repository.
+2. Open the workspace in XCode.
+3. Update the `Example` project's `Podfile` to reference the local repository instead of a specific version of the Critic Cocoapod.
+4. Validate everything works in your simulator.
+
+### Releasing a New Cocoapod Version
+
+1. Update the version in `Critic.podspec`.
+2. Create a new tag for your changes, and push it up to GitHub.
+3. Run `bundle exec pod trunk push Critic.podspec`
+4. Wait several minutes for the updated version to become available.
+
 ## License
 
 This library is released under the MIT License.
