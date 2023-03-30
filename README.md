@@ -189,6 +189,8 @@ You do not need to do these steps if you simply wish to use Critic in your app.
 2. Create a new tag for your changes, and push it up to GitHub.
 3. Run `bundle exec pod trunk push Critic.podspec`
 4. Wait several minutes for the updated version to become available.
+5. Update your `Podfile` to reference the new version.
+6. Run `bundle exec pod repo update && bundle exec pod install --repo-update` to update to the new version.
 
 ## License
 
