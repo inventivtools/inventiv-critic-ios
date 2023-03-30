@@ -1,5 +1,5 @@
 PODS:
-  - Critic (0.1.3):
+  - Critic (0.1.4):
     - SystemServices (~> 2.0.1)
     - "UITextView+Placeholder (~> 1.2)"
   - SystemServices (2.0.1)
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Critic: 0ef002020badef96b0e4c7c1a4aacc60b63e0731
+  Critic: d1dafac523c5242fb430426ba0528a589a6df031
   SystemServices: 7af348493ece8951449b476c41532df72569b181
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 

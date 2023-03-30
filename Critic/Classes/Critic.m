@@ -8,6 +8,7 @@
 #import <objc/message.h>
 
 @implementation Critic
+    static bool alreadyStarted = false;
 
 + (NSString *)API_BASE_URL{
     return @"https://critic.inventiv.io";
@@ -59,9 +60,10 @@
     NSAssert(![productAccessToken isEqualToString:@"YOUR_PRODUCT_ACCESS_TOKEN"], @"Your Product Access Token is invalid. Please use a valid one. See the Critic Getting Started Guide at https://inventiv.io/critic/critic-integration-getting-started/.");
     
     [self setProductAccessToken:productAccessToken];
-    if([self shouldLogToFile]){
+    if([self shouldLogToFile] && !alreadyStarted){
         [self startLogCapture];
     }
+    alreadyStarted = true;
     
     NVCPingCreator *pingCreator = [NVCPingCreator new];
     dispatch_queue_t queue = dispatch_queue_create("io.inventiv.critic.ping.create", NULL);

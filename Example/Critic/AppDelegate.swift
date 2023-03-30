@@ -9,8 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Critic.instance().startLogCapture()
-        Critic.instance().deviceMetadata["lat"] = -33.092138;
-        Critic.instance().deviceMetadata["lng"] = 10.03249;
+        Critic.instance().deviceMetadata["something_cool"] = "This is device metadata! :)"
         Critic.instance().start("gJ44GxttrahyVBFs4k3jb8T1")
         Critic.instance().productMetadata["test_key"] = "test_value";
         return true
